@@ -8,6 +8,7 @@ const session = require('express-session');
 dotenv.config();
 const db = require('./connection');
 const UserController = require('./controllers/user');
+const ContactController = require('./controllers/contact');
 const { authenticate } = require('./authentication');
 const app = express();
 const port = 3002;
@@ -32,6 +33,8 @@ app.get('/', (req, res) => {
 
 app.post('/login', UserController.userLogin);
 app.get('/user/:id', authenticate, UserController.getUser);
+app.get('/contacts/:userId', authenticate, ContactController.getContacts);
+app.post('/create', authenticate, ContactController.createContact);
 app.get('/logout', (req, res) => {
   req.logout();
   res.send('logout success');

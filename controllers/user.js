@@ -15,26 +15,26 @@ const userLogin = (req, res) => {
         data: { id: user_id, email, username, avatar }
       });
     }).catch(err => {
-      throw (err);
+      throw(err) 
     })
 }
 
 const getUser = (req, res) => {
-  console.log('user log', req.params.id)
   const id = req.params.id;
   const text = 'SELECT * FROM users WHERE user_id = $1';
   const params = [id];
   return query(text, params)
     .then(result => {
-      console.log(result.rows[0]);
+      const user = result.rows[0]
+      user.id = user.user_id;
       res.json({
         success: true,
-        data: result.rows[0],
+        data: user,
       });
     })
     .catch(err => {
       throw(err);
-    })
+    });
 }
 
 module.exports = {
