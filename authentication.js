@@ -18,9 +18,9 @@ const authenticate = (req, res, next) => {
     }
     jwt.verify(token, process.env.SECRET, (err, decoded) => {
       if (err) {
-        return res.status(401).json({
+        return res.status(302).json({
           success: false,
-          message: 'Invalid token'
+          message: '/login',
         });
       } else {
         req.decoded = decoded;
@@ -28,10 +28,9 @@ const authenticate = (req, res, next) => {
       }
     });
   } else {
-    console.log('token:', token);
-    return res.status(401).json({
+    return res.status(302).json({
       success: false,
-      message: 'Invalid token',
+      message: '/login',
     });
   }
 }

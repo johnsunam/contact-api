@@ -35,6 +35,8 @@ app.post('/login', UserController.userLogin);
 app.get('/user/:id', authenticate, UserController.getUser);
 app.get('/contacts/:userId', authenticate, ContactController.getContacts);
 app.post('/create', authenticate, ContactController.createContact);
+app.put('/update', authenticate, ContactController.updateContact);
+app.delete('/delete/:id', authenticate, ContactController.deleteContact);
 app.get('/logout', (req, res) => {
   req.logout();
   res.send('logout success');
