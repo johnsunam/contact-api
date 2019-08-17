@@ -5,8 +5,7 @@
   
 ## Steps to run this project
  1. Clone the project
- 2. Go to inside the project directory i.e `contact-api`
- 4. For database you need to install postgres in your system
+ 2. Go to the project directory i.e `contact-api`
  3. Run command
  
       ```npm install```
